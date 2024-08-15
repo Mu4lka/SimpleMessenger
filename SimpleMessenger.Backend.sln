@@ -3,12 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scr", "scr", "{28A3650F-470F-4F7D-8FB0-AA925A67B4B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{6FCF8621-EDEC-43EC-B3CD-E36774B8E93A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMessenger.Api", "scr\SimpleMessenger.Api\SimpleMessenger.Api.csproj", "{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMessenger.Domain", "scr\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj", "{5242C50D-B7FD-490F-9C86-43B27645787D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMessenger.Contracts", "scr\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj", "{003369F7-C3CE-4C3C-BDA9-345D2B52B67C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5242C50D-B7FD-490F-9C86-43B27645787D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5242C50D-B7FD-490F-9C86-43B27645787D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5242C50D-B7FD-490F-9C86-43B27645787D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5242C50D-B7FD-490F-9C86-43B27645787D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003369F7-C3CE-4C3C-BDA9-345D2B52B67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003369F7-C3CE-4C3C-BDA9-345D2B52B67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003369F7-C3CE-4C3C-BDA9-345D2B52B67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003369F7-C3CE-4C3C-BDA9-345D2B52B67C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B6E59E48-87EC-44E5-A79A-9D4FBEB6FAD8} = {28A3650F-470F-4F7D-8FB0-AA925A67B4B3}
+		{5242C50D-B7FD-490F-9C86-43B27645787D} = {28A3650F-470F-4F7D-8FB0-AA925A67B4B3}
+		{003369F7-C3CE-4C3C-BDA9-345D2B52B67C} = {28A3650F-470F-4F7D-8FB0-AA925A67B4B3}
 	EndGlobalSection
 EndGlobal
