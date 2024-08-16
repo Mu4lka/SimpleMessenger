@@ -12,7 +12,7 @@ namespace SimpleMessenger.Api.Controllers;
 public class MessagesController(IMessagesService _service, IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     [HttpGet("{minutes:int}")]
-    public async Task<ActionResult<ICollection<MessageDto>>> GetMessagesInLastMinutesAsync([FromQuery] int minutes)
+    public async Task<ActionResult<ICollection<MessageDto>>> GetMessagesInLastMinutesAsync(int minutes)
     {
         var messageDtos = await _service.GetMessagesInLastMinutesAsync(minutes);
 
@@ -20,7 +20,7 @@ public class MessagesController(IMessagesService _service, IHubContext<MessageHu
     }
 
     [HttpPost]
-    public async Task<IActionResult> SendMessageAsync([FromBody] SendMessageRequest request)
+    public async Task<IActionResult> SendMessageAsync(SendMessageRequest request)
     {
         var messageDto = new MessageDto(
                 request.Content,

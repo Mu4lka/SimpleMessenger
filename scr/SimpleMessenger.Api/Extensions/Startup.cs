@@ -1,4 +1,8 @@
-﻿using SimpleMessenger.Api.Hubs;
+﻿using Infrastucture.Interfaces;
+using Infrastucture.Repositories;
+using Infrastucture.Services;
+using SimpleMessenger.Api.Hubs;
+using SimpleMessenger.DataAccess.Interfaces;
 
 namespace SimpleMessenger.Api.Extensions;
 
@@ -6,11 +10,14 @@ public static class Startup
 {
     public static IServiceCollection ConfigureServices(this IServiceCollection services)
     {
-        services.AddSignalR();
+        services
+            .AddScoped<IMessagesRepository, MessagesRepository>()
+            .AddScoped<IMessagesService, MessagesService>()
+            .AddSignalR();
         return services;
     }
 
-    public static IApplicationBuilder Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public static IApplicationBuilder ConfigureHub(this IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
         {

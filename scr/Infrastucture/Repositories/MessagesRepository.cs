@@ -1,19 +1,24 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
 using SimpleMessenger.DataAccess.Interfaces;
 using SimpleMessenger.Domain;
 
 namespace Infrastucture.Repositories;
 
-public class MessagesRepository(string _connectionString) : IMessagesRepository
+public class MessagesRepository : IMessagesRepository
 {
-    private const string TableName = "Messages";
+    public const string TableName = "public.\"Messages\"";
+    private string? _connectionString;
+
+    public MessagesRepository(IConfiguration configuration)
+        => _connectionString = configuration.GetConnectionString("DefaultConnection");
 
     public async Task CreateAsync(Message message)
     {
         var sql = $"""
             INSERT INTO {TableName} (id, content, created_date, sequence_number)
-            VALUES (@Id, @Context, @CreatedDate, @SequenceNumber)
+            VALUES (@Id, @Content, @CreatedDate, @SequenceNumber)
             """;
 
         // TODO: Возможно лучше использовать пул соединений, чтобы каждый раз не открывать
@@ -25,7 +30,7 @@ public class MessagesRepository(string _connectionString) : IMessagesRepository
 
     public async Task<ICollection<Message>> GetMessagesInLastMinutesAsync(int minutes)
     {
-        var sql = $"SELECT * FROM messages WHERE created_date >= NOW() - INTERVAL '{minutes} minutes'";
+        var sql = $"SELECT * FROM {TableName} WHERE created_date >= NOW() - INTERVAL '{minutes} minutes'";
 
         await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
