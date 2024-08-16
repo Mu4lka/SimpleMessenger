@@ -30,18 +30,18 @@ public class MessagesRepository : IMessagesRepository
 
     public async Task<ICollection<Message>> GetMessagesInLastMinutesAsync(int minutes)
     {
-        var sql = $"""
-        SELECT id AS Id, content AS Content, created_date AS CreatedDate, sequence_number AS SequenceNumber 
-        FROM "Messages"
-        WHERE created_date >= now() - interval '10 minute'
-        """;
+        var fixedTime = DateTime.Now.AddMinutes(-minutes).ToString("yyyy-MM-dd HH:mm:ss");
 
+        var sql = $"""
+            SELECT id AS Id, content AS Content, created_date AS CreatedDate, sequence_number AS SequenceNumber 
+            FROM {TableName}
+            WHERE created_date >= '{fixedTime}';
+            """;
+        
         await using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync();
 
         var messages = await connection.QueryAsync<Message>(sql);
 
-        await connection.CloseAsync();
         return messages.ToList();
     }
 }
