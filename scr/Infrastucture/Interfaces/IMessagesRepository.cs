@@ -4,6 +4,6 @@ namespace SimpleMessenger.DataAccess.Interfaces;
 
 public interface IMessagesRepository
 {
-    Task<ICollection<Message>> GetMessagesInTheLastMinutesAsync(int minutes);
+    Task<ICollection<Message>> GetMessagesInLastMinutesAsync(int minutes);
     Task CreateAsync(Message message);
 }

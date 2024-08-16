@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleMessenger.DataAccess\SimpleMessenger.DataAccess.csproj" />
+    <ProjectReference Include="..\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj" />
+    <ProjectReference Include="..\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj" />
   </ItemGroup>
 
 </Project>

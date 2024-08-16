@@ -1,10 +1,9 @@
-﻿using Npgsql;
-using Dapper;
+﻿using Dapper;
+using Npgsql;
 using SimpleMessenger.DataAccess.Interfaces;
 using SimpleMessenger.Domain;
-using System.Collections.Generic;
 
-namespace SimpleMessenger.DataAccess.Repositories;
+namespace Infrastucture.Repositories;
 
 public class MessagesRepository(string _connectionString) : IMessagesRepository
 {
@@ -22,9 +21,9 @@ public class MessagesRepository(string _connectionString) : IMessagesRepository
         await connection.ExecuteAsync(sql, message);
     }
 
-    public async Task<ICollection<Message>> GetMessagesInTheLastMinutesAsync(int minutes)
+    public async Task<ICollection<Message>> GetMessagesInLastMinutesAsync(int minutes)
     {
-        var sql = $"SELECT * FROM messages WHERE created_at >= NOW() - INTERVAL '{minutes} minutes'";
+        var sql = $"SELECT * FROM messages WHERE created_date >= NOW() - INTERVAL '{minutes} minutes'";
 
         await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
