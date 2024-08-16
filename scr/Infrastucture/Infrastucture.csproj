@@ -16,4 +16,8 @@
     <ProjectReference Include="..\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
 </Project>

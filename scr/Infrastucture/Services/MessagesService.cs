@@ -15,15 +15,12 @@ public class MessagesService(IMessagesRepository _repository) : IMessagesService
             .ToList();
     }
 
-    public Task SendMessageAsync(MessageDto messageDto)
-    {
-        _repository.CreateAsync(
+    public Task CreateMessageAsync(MessageDto messageDto)
+        => _repository.CreateAsync(
             new Message(
                 Guid.NewGuid(),
                 messageDto.Content,
                 messageDto.CreatedDate,
                 messageDto.SequenceNumber
                 ));
-        return Task.CompletedTask;
-    }
 }

@@ -16,9 +16,11 @@ public class MessagesRepository(string _connectionString) : IMessagesRepository
             VALUES (@Id, @Context, @CreatedDate, @SequenceNumber)
             """;
 
+        // TODO: Возможно лучше использовать пул соединений, чтобы каждый раз не открывать
         await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
         await connection.ExecuteAsync(sql, message);
+        await connection.CloseAsync();
     }
 
     public async Task<ICollection<Message>> GetMessagesInLastMinutesAsync(int minutes)
@@ -28,6 +30,7 @@ public class MessagesRepository(string _connectionString) : IMessagesRepository
         await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
         var messages = await connection.QueryAsync<Message>(sql);
+        await connection.CloseAsync();
         return messages.ToList();
     }
 }

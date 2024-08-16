@@ -9,6 +9,7 @@ public class SendMessageRequest
     [Required]
     public string Content { get; set; } = default!;
 
+    /// <summary> Порядковый номер </summary>
     [Required]
     public int SequenceNumber { get; set; }
 }
