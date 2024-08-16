@@ -4,9 +4,8 @@
 /// Сущность
 /// </summary>
 /// <typeparam name="TId"></typeparam>
-/// <param name="id"> Идентификатор </param>
-public class Entity<TId>(TId id)
+public class Entity<TId>
 {
     /// <summary> Идентификатор </summary>
-    public TId Id { get; init; } = id;
+    public TId Id { get; init; }
 }

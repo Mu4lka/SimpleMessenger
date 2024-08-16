@@ -17,10 +17,10 @@ public class MessagesService(IMessagesRepository _repository) : IMessagesService
 
     public Task CreateMessageAsync(MessageDto messageDto)
         => _repository.CreateAsync(
-            new Message(
-                Guid.NewGuid(),
-                messageDto.Content,
-                messageDto.CreatedDate,
-                messageDto.SequenceNumber
-                ));
+            new Message() {
+                Id = Guid.NewGuid(),
+                Content = messageDto.Content,
+                CreatedDate = messageDto.CreatedDate,
+                SequenceNumber = messageDto.SequenceNumber
+            });
 }
