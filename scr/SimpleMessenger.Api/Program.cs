@@ -1,6 +1,5 @@
 using Infrastucture.Persistence;
-using SimpleMessenger.Api.Extensions;
-
+using SimpleMessenger.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,7 @@ builder.Services.AddControllers();
 
 var configuration = builder.Configuration;
 builder.Services.UpdateDatabase(configuration);
-builder.Services.AddServices();
+builder.Services.ConfigureServices();
 builder.Services.ConfigureCors();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

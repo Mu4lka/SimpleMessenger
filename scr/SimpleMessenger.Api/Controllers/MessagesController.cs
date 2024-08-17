@@ -1,15 +1,21 @@
-﻿using Infrastucture.Interfaces;
+﻿using FluentValidation;
+using Infrastucture.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Options;
 using SimpleMessenger.Api.Hubs;
 using SimpleMessenger.Contracts.Dto;
 using SimpleMessenger.Contracts.Requests;
+using System;
 
 namespace SimpleMessenger.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MessagesController(IMessagesService _service, IHubContext<MessageHub> _hubContext) : ControllerBase
+public class MessagesController(
+    IValidator<MessageDto> _validator,
+    IMessagesService _service,
+    IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     /// <summary>
     /// Получить сообщения отправленные после определенного времени
@@ -37,6 +43,17 @@ public class MessagesController(IMessagesService _service, IHubContext<MessageHu
                 DateTime.Now,
                 request.SequenceNumber
                 );
+
+        var validationResult = await _validator.ValidateAsync(messageDto);
+
+        if (!validationResult.IsValid)
+        {
+            validationResult.Errors.ForEach(
+                error => ModelState.AddModelError(error.PropertyName, error.ErrorMessage)
+                );
+
+            return BadRequest(ModelState);
+        }
 
         await _service.CreateMessageAsync(messageDto);
 

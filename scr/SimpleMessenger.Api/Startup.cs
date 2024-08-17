@@ -1,10 +1,15 @@
-﻿using Infrastucture.Interfaces;
+﻿using FluentValidation;
+using Infrastucture.Interfaces;
 using Infrastucture.Repositories;
 using Infrastucture.Services;
+using Infrastucture.Validators;
 using SimpleMessenger.Api.Hubs;
+using SimpleMessenger.Contracts.Dto;
+using SimpleMessenger.Contracts.Requests;
 using SimpleMessenger.DataAccess.Interfaces;
+using System;
 
-namespace SimpleMessenger.Api.Extensions;
+namespace SimpleMessenger.Api;
 
 public static class Startup
 {
@@ -22,8 +27,9 @@ public static class Startup
                 });
         });
 
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static IServiceCollection ConfigureServices(this IServiceCollection services)
     {
+        services.AddScoped<IValidator<MessageDto>, MessageDtoValidator>();
         services
             .AddScoped<IMessagesRepository, MessagesRepository>()
             .AddScoped<IMessagesService, MessagesService>()
