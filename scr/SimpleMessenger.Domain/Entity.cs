@@ -7,5 +7,5 @@
 public class Entity<TId>
 {
     /// <summary> Идентификатор </summary>
-    public TId Id { get; init; }
+    public TId Id { get; init; } = default!;
 }
