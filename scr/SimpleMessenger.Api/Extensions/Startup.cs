@@ -8,9 +8,8 @@ namespace SimpleMessenger.Api.Extensions;
 
 public static class Startup
 {
-    public static IServiceCollection ConfigureServices(this IServiceCollection services)
-    {
-        services.AddCors(options =>
+    public static IServiceCollection ConfigureCors(this IServiceCollection services)
+        => services.AddCors(options =>
         {
             options.AddPolicy("AllowSpecificOrigin",
                 builder =>
@@ -23,6 +22,8 @@ public static class Startup
                 });
         });
 
+    public static IServiceCollection AddServices(this IServiceCollection services)
+    {
         services
             .AddScoped<IMessagesRepository, MessagesRepository>()
             .AddScoped<IMessagesService, MessagesService>()

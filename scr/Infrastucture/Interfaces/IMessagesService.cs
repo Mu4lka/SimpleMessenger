@@ -4,6 +4,6 @@ namespace Infrastucture.Interfaces;
 
 public interface IMessagesService
 {
-    Task<ICollection<MessageDto>> GetMessagesInLastMinutesAsync(int minutes);
+    Task<ICollection<MessageDto>> GetMessagesSentAfterAsync(DateTime sentAfter);
     Task CreateMessageAsync(MessageDto messageDto);
 }

@@ -12,17 +12,14 @@ namespace SimpleMessenger.Api.Controllers;
 public class MessagesController(IMessagesService _service, IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     /// <summary>
-    /// Получить сообщения в последние минуты
+    /// Получить сообщения отправленные после определенного времени
     /// </summary>
     /// <param name="minutes"></param>
     /// <returns></returns>
-    [HttpGet("{minutes:int}")]
-    public async Task<ActionResult<ICollection<MessageDto>>> GetMessagesInLastMinutesAsync(int minutes)
+    [HttpGet]
+    public async Task<ActionResult<ICollection<MessageDto>>> GetMessagesSentAfterAsync([FromQuery(Name = "sent-after")] DateTime sentAfter)
     {
-        if (minutes < 0)
-            return BadRequest("The value for minutes cannot be negative");
-
-        var messageDtos = await _service.GetMessagesInLastMinutesAsync(minutes);
+        var messageDtos = await _service.GetMessagesSentAfterAsync(sentAfter);
 
         return Ok(messageDtos);
     }
@@ -33,7 +30,7 @@ public class MessagesController(IMessagesService _service, IHubContext<MessageHu
     /// <param name="request"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> SendMessageAsync(SendMessageRequest request)
+    public async Task<IActionResult> SendMessageAsync([FromBody] SendMessageRequest request)
     {
         var messageDto = new MessageDto(
                 request.Content,
