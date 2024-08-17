@@ -1,6 +1,4 @@
 using Infrastucture.Persistence;
-using Infrastucture;
-using Microsoft.Extensions.DependencyInjection;
 using SimpleMessenger.Api.Extensions;
 
 

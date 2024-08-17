@@ -6,10 +6,8 @@ namespace SimpleMessenger.Contracts.Requests;
 public class SendMessageRequest
 {
     /// <summary> Сообщение </summary>
-    [Required]
     public string Content { get; set; } = default!;
 
     /// <summary> Порядковый номер </summary>
-    [Required]
     public int SequenceNumber { get; set; }
 }
