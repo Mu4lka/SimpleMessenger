@@ -3,14 +3,35 @@
 /// <summary>
 /// Сообщение
 /// </summary>
-public class Message : Entity<Guid>
+public class Message
 {
-    /// <summary> Контент сообщения </summary>
-    public required string Content { get; init; } = default!;
+    public Message(string content, DateTime createdDate, int sequenceNumber)
+    {
+        Id = Guid.NewGuid();
+        Content = content;
+        CreatedDate = createdDate;
+        SequenceNumber = sequenceNumber;
+    }
 
-    /// <summary> Дата создания </summary>
-    public required DateTime CreatedDate { get; init; }
+    protected Message() { }
 
-    /// <summary> Порядковый номер </summary>
-    public required int SequenceNumber { get; init; }
+    /// <summary>
+    /// Идентификатор
+    /// </summary>
+    public Guid Id { get; } = default!;
+
+    /// <summary>
+    /// Контент сообщения
+    /// </summary>
+    public string Content { get; }
+
+    /// <summary>
+    /// Дата создания
+    /// </summary>
+    public DateTime CreatedDate { get; }
+
+    /// <summary>
+    /// Порядковый номер
+    /// </summary>
+    public int SequenceNumber { get; }
 }

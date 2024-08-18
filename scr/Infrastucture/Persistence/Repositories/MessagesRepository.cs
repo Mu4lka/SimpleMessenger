@@ -4,7 +4,7 @@ using Npgsql;
 using SimpleMessenger.DataAccess.Interfaces;
 using SimpleMessenger.Domain;
 
-namespace Infrastucture.Repositories;
+namespace Infrastucture.Persistence.Repositories;
 
 public class MessagesRepository : IMessagesRepository
 {

@@ -7,20 +7,26 @@ namespace Infrastucture.Persistence;
 
 public static class ConfiguretionDb
 {
-    public static IServiceCollection UpdateDatabase(this IServiceCollection services, IConfiguration configuration)
+    /// <summary>
+    /// Обновить базу данных
+    /// </summary>
+    public static void UpdateDatabase(this IServiceProvider provider)
     {
-        var provider = services.AddFluentMigratorCore()
-                .ConfigureRunner(rb => rb
-                    .AddPostgres()
-                    .WithGlobalConnectionString(configuration.GetConnectionString("DefaultConnection")!)
-                    .ScanIn(typeof(AddedMessagesTable).Assembly).For.Migrations())
-                .AddLogging(lb => lb.AddFluentMigratorConsole())
-                .BuildServiceProvider(false);
-
         using var scope = provider.CreateScope();
         var runner = provider.GetRequiredService<IMigrationRunner>();
 
         runner.MigrateUp();
-        return services;
     }
+
+    /// <summary>
+    /// Сконфигурировать миграции
+    /// </summary>
+    public static IServiceProvider ConfigureMigrations(this IServiceCollection services, IConfiguration configuration)
+        => services.AddFluentMigratorCore()
+               .ConfigureRunner(rb => rb
+                   .AddPostgres()
+                   .WithGlobalConnectionString(configuration.GetConnectionString("DefaultConnection")!)
+                   .ScanIn(typeof(AddedMessagesTable).Assembly).For.Migrations())
+               .AddLogging(lb => lb.AddFluentMigratorConsole())
+               .BuildServiceProvider(false);
 }
