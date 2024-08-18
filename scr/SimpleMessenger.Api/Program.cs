@@ -13,8 +13,10 @@ builder.Services
 builder.Services.ConfigureServices();
 builder.Services.ConfigureCors();
 builder.Services.AddSignalR();
+builder.Services.ConfigureSwagger();
 
 builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 app.UseCors();
