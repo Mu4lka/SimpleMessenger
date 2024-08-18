@@ -1,5 +1,6 @@
 using Infrastucture.Persistence;
 using SimpleMessenger.Api;
+using SimpleMessenger.Api.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,8 @@ builder.Services.AddSignalR();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
-app.ConfigureHub(builder.Environment);
+app.UseCors();
+app.MapHub<MessageHub>("/messageHub");
 
 if (app.Environment.IsDevelopment())
 {

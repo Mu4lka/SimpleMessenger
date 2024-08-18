@@ -20,7 +20,8 @@ public class MessagesController(
     [HttpGet]
     public async Task<ActionResult<GetMessagesResponse>> GetMessagesSentAfterAsync([FromQuery(Name = "sent-after")] DateTime sentAfter)
     {
-        var messageDtos = await _service.GetMessagesSentAfterAsync(sentAfter);
+        var localSentAfter = TimeZoneInfo.ConvertTimeFromUtc(sentAfter, TimeZoneInfo.Local);
+        var messageDtos = await _service.GetMessagesSentAfterAsync(localSentAfter);
 
         return Ok(new GetMessagesResponse { Messages = messageDtos });
     }
