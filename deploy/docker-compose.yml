@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  db:
+    restart: always
+    image: postgres:15.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: simpleMessenger
+      POSTGRES_DB: simpleMessenger
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+
+    ports:
+      - 5432:5432  
+
+  simplemessenger.api:
+    image: ${DOCKER_REGISTRY-}simplemessengerapi
+    build:
+      context: .
+      dockerfile: scr/SimpleMessenger.Api/Dockerfile
