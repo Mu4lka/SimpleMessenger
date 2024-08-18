@@ -1,9 +1,9 @@
-﻿using Infrastucture.Interfaces;
+﻿using SimpleMessenger.Application.Interfaces;
 using SimpleMessenger.Contracts.Dto;
-using SimpleMessenger.DataAccess.Interfaces;
 using SimpleMessenger.Domain;
+using SimpleMessenger.Domain.Entities;
 
-namespace Infrastucture.Services;
+namespace SimpleMessenger.Application.Services;
 
 public class MessagesService(IMessagesRepository _repository) : IMessagesService
 {

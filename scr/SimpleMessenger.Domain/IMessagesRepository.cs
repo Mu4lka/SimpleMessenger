@@ -1,6 +1,6 @@
-﻿using SimpleMessenger.Domain;
+﻿using SimpleMessenger.Domain.Entities;
 
-namespace SimpleMessenger.DataAccess.Interfaces;
+namespace SimpleMessenger.Domain;
 
 public interface IMessagesRepository
 {

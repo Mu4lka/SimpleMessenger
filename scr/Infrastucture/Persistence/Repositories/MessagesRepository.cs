@@ -1,8 +1,8 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
-using SimpleMessenger.DataAccess.Interfaces;
 using SimpleMessenger.Domain;
+using SimpleMessenger.Domain.Entities;
 
 namespace Infrastucture.Persistence.Repositories;
 

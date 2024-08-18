@@ -1,4 +1,4 @@
-﻿namespace SimpleMessenger.Domain;
+﻿namespace SimpleMessenger.Domain.Entities;
 
 /// <summary>
 /// Сообщение

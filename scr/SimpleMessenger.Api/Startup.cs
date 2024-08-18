@@ -1,8 +1,8 @@
-﻿using Infrastucture.Interfaces;
-using Infrastucture.Persistence.Repositories;
-using Infrastucture.Services;
+﻿using Infrastucture.Persistence.Repositories;
 using SimpleMessenger.Api.Hubs;
-using SimpleMessenger.DataAccess.Interfaces;
+using SimpleMessenger.Application.Interfaces;
+using SimpleMessenger.Application.Services;
+using SimpleMessenger.Domain;
 
 namespace SimpleMessenger.Api;
 

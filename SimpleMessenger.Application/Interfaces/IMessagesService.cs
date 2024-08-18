@@ -1,6 +1,6 @@
 ﻿using SimpleMessenger.Contracts.Dto;
 
-namespace Infrastucture.Interfaces;
+namespace SimpleMessenger.Application.Interfaces;
 
 public interface IMessagesService
 {

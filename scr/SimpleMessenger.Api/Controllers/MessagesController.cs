@@ -1,7 +1,7 @@
-﻿using Infrastucture.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using SimpleMessenger.Api.Hubs;
+using SimpleMessenger.Application.Interfaces;
 using SimpleMessenger.Contracts.Dto;
 using SimpleMessenger.Contracts.Requests;
 using SimpleMessenger.Contracts.Responses;

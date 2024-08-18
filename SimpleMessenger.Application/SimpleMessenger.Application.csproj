@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\scr\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj" />
+    <ProjectReference Include="..\scr\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
