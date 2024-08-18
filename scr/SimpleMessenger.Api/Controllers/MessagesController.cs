@@ -22,7 +22,10 @@ public class MessagesController(
         [FromQuery(Name = "startDate")] DateTime startDate,
         [FromQuery(Name = "endDate")] DateTime endDate)
     {
-        var messageDtos = await _service.GetMessagesForRangeAsync(startDate, endDate);
+        var localStartDate = TimeZoneInfo.ConvertTimeFromUtc(startDate, TimeZoneInfo.Local);
+        var localEndDate = TimeZoneInfo.ConvertTimeFromUtc(endDate, TimeZoneInfo.Local);
+
+        var messageDtos = await _service.GetMessagesForRangeAsync(localStartDate, localEndDate);
 
         return Ok(new GetMessagesResponse { Messages = messageDtos });
     }
