@@ -25,16 +25,16 @@ public class MessagesRepository : IMessagesRepository
         await connection.ExecuteAsync(sql, message);
     }
 
-    public async Task<ICollection<Message>> GetMessagesSentAfterAsync(DateTime sentAfter)
+    public async Task<ICollection<Message>> GetMessagesForRangeAsync(DateTime startDate, DateTime endDate)
     {
         var sql = $"""
-            SELECT id AS Id, content AS Content, created_date AS CreatedDate, sequence_number AS SequenceNumber 
-            FROM {TableName}
-            WHERE created_date >= @SentAfter;
-            """;
+        SELECT id AS Id, content AS Content, created_date AS CreatedDate, sequence_number AS SequenceNumber
+        FROM {TableName}
+        WHERE created_date >= @startDate AND created_date <= @endDate;
+        """;
 
         await using var connection = new NpgsqlConnection(_connectionString);
-        var messages = await connection.QueryAsync<Message>(sql, new { SentAfter = sentAfter });
+        var messages = await connection.QueryAsync<Message>(sql, new { startDate, endDate });
 
         return messages.ToList();
     }

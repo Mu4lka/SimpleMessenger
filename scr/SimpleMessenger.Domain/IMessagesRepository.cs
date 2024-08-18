@@ -4,6 +4,6 @@ namespace SimpleMessenger.Domain;
 
 public interface IMessagesRepository
 {
-    Task<ICollection<Message>> GetMessagesSentAfterAsync(DateTime sentAfter);
+    Task<ICollection<Message>> GetMessagesForRangeAsync(DateTime startDate, DateTime endDate);
     Task CreateMessageAsync(Message message);
 }

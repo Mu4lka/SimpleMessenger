@@ -15,13 +15,14 @@ public class MessagesController(
     IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     /// <summary>
-    /// Получить сообщения отправленные после определенного времени
+    /// Получить сообщения за определенный диапазон
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<GetMessagesResponse>> GetMessagesSentAfterAsync([FromQuery(Name = "sent-after")] DateTime sentAfter)
+    public async Task<ActionResult<GetMessagesResponse>> GetMessagesForRangeAsync(
+        [FromQuery(Name = "startDate")] DateTime startDate,
+        [FromQuery(Name = "endDate")] DateTime endDate)
     {
-        var localSentAfter = TimeZoneInfo.ConvertTimeFromUtc(sentAfter, TimeZoneInfo.Local);
-        var messageDtos = await _service.GetMessagesSentAfterAsync(localSentAfter);
+        var messageDtos = await _service.GetMessagesForRangeAsync(startDate, endDate);
 
         return Ok(new GetMessagesResponse { Messages = messageDtos });
     }
