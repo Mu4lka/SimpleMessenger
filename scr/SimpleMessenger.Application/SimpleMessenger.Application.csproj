@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\scr\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj" />
-    <ProjectReference Include="..\scr\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj" />
+    <ProjectReference Include="..\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj" />
+    <ProjectReference Include="..\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj" />
   </ItemGroup>
 
 </Project>

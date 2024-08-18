@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SimpleMessenger.Application\SimpleMessenger.Application.csproj" />
     <ProjectReference Include="..\Infrastucture\Infrastucture.csproj" />
+    <ProjectReference Include="..\SimpleMessenger.Application\SimpleMessenger.Application.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
