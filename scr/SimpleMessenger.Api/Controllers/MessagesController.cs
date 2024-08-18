@@ -17,15 +17,17 @@ public class MessagesController(
     /// <summary>
     /// Получить сообщения за определенный диапазон
     /// </summary>
+    /// <param name="startDate">Начальная дата диапазона</param>
+    /// <param name="endDate">Конечная дата диапазона</param>
     [HttpGet]
     public async Task<ActionResult<GetMessagesResponse>> GetMessagesForRangeAsync(
         [FromQuery(Name = "startDate")] DateTime startDate,
         [FromQuery(Name = "endDate")] DateTime endDate)
     {
-        var localStartDate = TimeZoneInfo.ConvertTimeFromUtc(startDate, TimeZoneInfo.Local);
-        var localEndDate = TimeZoneInfo.ConvertTimeFromUtc(endDate, TimeZoneInfo.Local);
+        var startDateInUtc = TimeZoneInfo.ConvertTimeFromUtc(startDate, TimeZoneInfo.Local);
+        var endDateInUtc = TimeZoneInfo.ConvertTimeFromUtc(endDate, TimeZoneInfo.Local);
 
-        var messageDtos = await _service.GetMessagesForRangeAsync(localStartDate, localEndDate);
+        var messageDtos = await _service.GetMessagesForRangeAsync(startDateInUtc, endDateInUtc);
 
         return Ok(new GetMessagesResponse { Messages = messageDtos });
     }
@@ -33,6 +35,7 @@ public class MessagesController(
     /// <summary>
     /// Отправить сообщение
     /// </summary>
+    /// <param name="request">Запрос на отправку сообщения</param>
     [HttpPost]
     public async Task<IActionResult> SendMessageAsync([FromBody] SendMessageRequest request)
     {
