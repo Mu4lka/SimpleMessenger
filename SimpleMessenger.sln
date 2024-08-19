@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{EFE822A8-886B-4A10-B633-6107E90830D8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "deploy\docker-compose.dcproj", "{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scr", "scr", "{6D7975FF-88C9-473D-8EE0-20C8325C83E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastucture", "scr\Infrastucture\Infrastucture.csproj", "{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Api", "scr\SimpleMessenger.Api\SimpleMessenger.Api.csproj", "{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Application", "scr\SimpleMessenger.Application\SimpleMessenger.Application.csproj", "{84193271-0D5F-4F38-A462-D44B9298AA35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Contracts", "scr\SimpleMessenger.Contracts\SimpleMessenger.Contracts.csproj", "{E5E3F942-D8E3-4387-A16B-C29F6836F241}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Domain", "scr\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj", "{8BE7AEE4-F074-42ED-AC0E-103C0F303F38}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84193271-0D5F-4F38-A462-D44B9298AA35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84193271-0D5F-4F38-A462-D44B9298AA35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84193271-0D5F-4F38-A462-D44B9298AA35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84193271-0D5F-4F38-A462-D44B9298AA35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5E3F942-D8E3-4387-A16B-C29F6836F241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E3F942-D8E3-4387-A16B-C29F6836F241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E3F942-D8E3-4387-A16B-C29F6836F241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E3F942-D8E3-4387-A16B-C29F6836F241}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BE7AEE4-F074-42ED-AC0E-103C0F303F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BE7AEE4-F074-42ED-AC0E-103C0F303F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BE7AEE4-F074-42ED-AC0E-103C0F303F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BE7AEE4-F074-42ED-AC0E-103C0F303F38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C} = {EFE822A8-886B-4A10-B633-6107E90830D8}
+		{ACADB67F-F36C-42C1-80B1-EAFFCDFEFA96} = {6D7975FF-88C9-473D-8EE0-20C8325C83E9}
+		{522CAC65-7EDC-4DC2-AD2E-1FDF5769022E} = {6D7975FF-88C9-473D-8EE0-20C8325C83E9}
+		{84193271-0D5F-4F38-A462-D44B9298AA35} = {6D7975FF-88C9-473D-8EE0-20C8325C83E9}
+		{E5E3F942-D8E3-4387-A16B-C29F6836F241} = {6D7975FF-88C9-473D-8EE0-20C8325C83E9}
+		{8BE7AEE4-F074-42ED-AC0E-103C0F303F38} = {6D7975FF-88C9-473D-8EE0-20C8325C83E9}
+	EndGlobalSection
+EndGlobal

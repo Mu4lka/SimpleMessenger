@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.9'
 
 services:
   db:
@@ -9,13 +9,24 @@ services:
       POSTGRES_PASSWORD: simpleMessenger
       POSTGRES_DB: simpleMessenger
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
-
+      - ../pgdata:/var/lib/postgresql/data
     ports:
-      - 5432:5432  
-
+      - 5432:5432
+    
   simplemessenger.api:
-    image: ${DOCKER_REGISTRY-}simplemessengerapi
     build:
-      context: .
-      dockerfile: scr/SimpleMessenger.Api/Dockerfile
+      context: ../scr/SimpleMessenger.Api
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+       condition: service_started
+    ports:
+      - 8080:8080
+
+  front:
+    container_name: simplemessenger.frontend
+    build:
+      context: ..
+      dockerfile: front/Dockerfile
+    ports:
+      - "3000:3000"
