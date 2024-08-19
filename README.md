@@ -6,6 +6,7 @@
 
 Перед началом убедитесь, что у вас установлены следующие инструменты:
 
+- [Git](https://git-scm.com/downloads)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -45,23 +46,6 @@ docker-compose up --build
 
 - База данных PostgreSQL будет доступна по адресу `localhost:5432`.
 - API будет доступно на порту, указанном в `Dockerfile`.
-- 
-## Сервисы
-
-### База данных (`db`)
-
-- **Образ**: `postgres:15.3`
-- **Переменные окружения**:
-  - `POSTGRES_USER`: postgres
-  - `POSTGRES_PASSWORD`: simpleMessenger
-  - `POSTGRES_DB`: simpleMessenger
-- **Порты**: `5432:5432`
-- **Тома**: `./pgdata:/var/lib/postgresql/data`
-
-### API (`simplemessenger.api`)
-
-- **Образ**: `simplemessengerapi`
-- **Контекст сборки**: `scr/SimpleMessenger.Api/Dockerfile`
 
 ## Остановка приложения
 
@@ -70,5 +54,3 @@ docker-compose up --build
 ```bash
 docker-compose down
 ```
-
-Эта команда остановит все работающие контейнеры.
