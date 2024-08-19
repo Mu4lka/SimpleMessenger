@@ -15,7 +15,7 @@ public class MessagesController(
     IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     /// <summary>
-    /// Получить сообщения за определенный диапазон
+    /// Получить сообщения за определенный диапазон, на сервере даты конвертируются в UTC
     /// </summary>
     /// <param name="startDate">Начальная дата диапазона</param>
     /// <param name="endDate">Конечная дата диапазона</param>
@@ -24,8 +24,8 @@ public class MessagesController(
         [FromQuery(Name = "startDate")] DateTime startDate,
         [FromQuery(Name = "endDate")] DateTime endDate)
     {
-        var startDateInUtc = TimeZoneInfo.ConvertTimeFromUtc(startDate, TimeZoneInfo.Local);
-        var endDateInUtc = TimeZoneInfo.ConvertTimeFromUtc(endDate, TimeZoneInfo.Local);
+        var startDateInUtc = TimeZoneInfo.ConvertTimeToUtc(startDate);
+        var endDateInUtc = TimeZoneInfo.ConvertTimeToUtc(endDate);
 
         var messageDtos = await _service.GetMessagesForRangeAsync(startDateInUtc, endDateInUtc);
 
