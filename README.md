@@ -20,12 +20,12 @@ git clone https://github.com/Mu4lka/SimpleMessenger.Backend.git
 ```
 
 ### Шаг 2: Доступ к фронтенду
-![SimpleMessenger Frontend](https://github.com/Mu4lka/SimpleMessanger.Front/blob/main/simpleMessangerFront.png)
+![SimpleMessenger Frontend](https://github.com/Mu4lka/SimpleMessanger.Frontend/blob/main/simpleMessangerFront.png)
 
 Приложение также содержит в себе frontend часть, поэтому выполните следующую команду:
 
 ```bash
-git clone https://github.com/Mu4lka/SimpleMessenger.Front.git
+git clone https://github.com/Mu4lka/SimpleMessenger.Frontend.git
 cd SimpleMessenger.Backend\deploy\
 ```
 
