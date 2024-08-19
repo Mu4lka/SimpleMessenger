@@ -1,40 +1,41 @@
-﻿using FluentValidation;
-using Infrastucture.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Options;
 using SimpleMessenger.Api.Hubs;
+using SimpleMessenger.Application.Interfaces;
 using SimpleMessenger.Contracts.Dto;
 using SimpleMessenger.Contracts.Requests;
-using System;
+using SimpleMessenger.Contracts.Responses;
 
 namespace SimpleMessenger.Api.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/messages")]
 [ApiController]
 public class MessagesController(
-    IValidator<MessageDto> _validator,
     IMessagesService _service,
     IHubContext<MessageHub> _hubContext) : ControllerBase
 {
     /// <summary>
-    /// Получить сообщения отправленные после определенного времени
+    /// Получить сообщения за определенный диапазон, на сервере даты конвертируются в UTC
     /// </summary>
-    /// <param name="minutes"></param>
-    /// <returns></returns>
+    /// <param name="startDate">Начальная дата диапазона</param>
+    /// <param name="endDate">Конечная дата диапазона</param>
     [HttpGet]
-    public async Task<ActionResult<ICollection<MessageDto>>> GetMessagesSentAfterAsync([FromQuery(Name = "sent-after")] DateTime sentAfter)
+    public async Task<ActionResult<GetMessagesResponse>> GetMessagesForRangeAsync(
+        [FromQuery(Name = "startDate")] DateTime startDate,
+        [FromQuery(Name = "endDate")] DateTime endDate)
     {
-        var messageDtos = await _service.GetMessagesSentAfterAsync(sentAfter);
+        var startDateInUtc = TimeZoneInfo.ConvertTimeToUtc(startDate);
+        var endDateInUtc = TimeZoneInfo.ConvertTimeToUtc(endDate);
 
-        return Ok(messageDtos);
+        var messageDtos = await _service.GetMessagesForRangeAsync(startDateInUtc, endDateInUtc);
+
+        return Ok(new GetMessagesResponse { Messages = messageDtos });
     }
 
     /// <summary>
     /// Отправить сообщение
     /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
+    /// <param name="request">Запрос на отправку сообщения</param>
     [HttpPost]
     public async Task<IActionResult> SendMessageAsync([FromBody] SendMessageRequest request)
     {
@@ -43,17 +44,6 @@ public class MessagesController(
                 DateTime.Now,
                 request.SequenceNumber
                 );
-
-        var validationResult = await _validator.ValidateAsync(messageDto);
-
-        if (!validationResult.IsValid)
-        {
-            validationResult.Errors.ForEach(
-                error => ModelState.AddModelError(error.PropertyName, error.ErrorMessage)
-                );
-
-            return BadRequest(ModelState);
-        }
 
         await _service.CreateMessageAsync(messageDto);
 

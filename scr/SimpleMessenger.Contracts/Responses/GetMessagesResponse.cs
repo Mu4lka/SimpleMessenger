@@ -2,7 +2,13 @@
 
 namespace SimpleMessenger.Contracts.Responses;
 
-internal class GetMessagesResponse
+/// <summary>
+/// Ответ на получение сообщений
+/// </summary>
+public class GetMessagesResponse
 {
+    /// <summary>
+    /// Сообщения
+    /// </summary>
     public ICollection<MessageDto> Messages { get; set; } = default!;
 }
