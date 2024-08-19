@@ -25,8 +25,7 @@ git clone https://github.com/Mu4lka/SimpleMessenger.Backend.git
 Приложение также содержит в себе frontend часть, поэтому выполните следующую команду:
 
 ```bash
-git clone https://github.com/Mu4lka/SimpleMessenger.Frontend.git
-cd SimpleMessenger.Backend\deploy\
+git clone https://github.com/Mu4lka/SimpleMessanger.Frontend.git
 ```
 
 ### Шаг 3: Сборка и запуск приложения
@@ -34,6 +33,7 @@ cd SimpleMessenger.Backend\deploy\
 Чтобы собрать и запустить приложение, выполните следующую команду в корневом каталоге вашего проекта:
 
 ```bash
+cd SimpleMessenger.Backend\deploy
 docker-compose up --build
 ```
 
