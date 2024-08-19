@@ -17,10 +17,19 @@
 
 ```bash
 git clone https://github.com/Mu4lka/SimpleMessenger.Backend.git
-cd SimpleMessenger.Backend
 ```
 
-### Шаг 2: Сборка и запуск приложения
+### Шаг 2: Доступ к фронтенду
+![SimpleMessenger Frontend](https://github.com/Mu4lka/SimpleMessanger.Front/blob/main/simpleMessangerFront.png)
+
+Приложение также содержит в себе frontend часть, поэтому выполните следующую команду:
+
+```bash
+git clone https://github.com/Mu4lka/SimpleMessenger.Front.git
+cd SimpleMessenger.Backend\deploy\
+```
+
+### Шаг 3: Сборка и запуск приложения
 
 Чтобы собрать и запустить приложение, выполните следующую команду в корневом каталоге вашего проекта:
 
@@ -30,19 +39,13 @@ docker-compose up --build
 
 Эта команда соберет образ `simplemessengerapi` и запустит оба сервиса: базу данных и API.
 
-### Шаг 3: Проверьте, что приложение работает
+### Шаг 4: Проверьте, что приложение работает
 
 Когда контейнеры будут запущены, вы можете убедиться, что приложение работает.
 
 - База данных PostgreSQL будет доступна по адресу `localhost:5432`.
 - API будет доступно на порту, указанном в `Dockerfile`.
-
-### Шаг 4: Доступ к фронтенду
-
-Приложение иметь фронтенд, где вы можете взаимодействовать с мессенджером. Как только все будет запущено, вы должны увидеть простой интерфейс чата, подобный тому, что изображен на картинке ниже:
-
-![SimpleMessenger Frontend](./simpleMessangerFront.png)
-
+- 
 ## Сервисы
 
 ### База данных (`db`)
