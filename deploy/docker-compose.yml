@@ -9,9 +9,14 @@ services:
       POSTGRES_PASSWORD: simpleMessenger
       POSTGRES_DB: simpleMessenger
     volumes:
-      - ../pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     
   simplemessenger.api:
     build:
@@ -19,7 +24,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       db:
-       condition: service_started
+       condition: service_healthy
     ports:
       - 8080:8080
 
