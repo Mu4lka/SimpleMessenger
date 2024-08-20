@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{321979
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "deploy\docker-compose.dcproj", "{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastucture", "src\Infrastucture\Infrastucture.csproj", "{5C234519-5F0E-401C-AB18-2A974DE5AA07}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Api", "src\SimpleMessenger.Api\SimpleMessenger.Api.csproj", "{B4D1FDEA-954C-4EC1-9537-0CA8C972F3AE}"
@@ -19,16 +17,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Contracts",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMessenger.Domain", "src\SimpleMessenger.Domain\SimpleMessenger.Domain.csproj", "{A01E36D6-4AB6-41A0-8EAD-7C47F7D7149C}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "deploy\docker-compose.dcproj", "{2A9B4D25-2BD1-4997-B243-06FDF977508B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C234519-5F0E-401C-AB18-2A974DE5AA07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C234519-5F0E-401C-AB18-2A974DE5AA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C234519-5F0E-401C-AB18-2A974DE5AA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,16 +45,23 @@ Global
 		{A01E36D6-4AB6-41A0-8EAD-7C47F7D7149C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A01E36D6-4AB6-41A0-8EAD-7C47F7D7149C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A01E36D6-4AB6-41A0-8EAD-7C47F7D7149C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9B4D25-2BD1-4997-B243-06FDF977508B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9B4D25-2BD1-4997-B243-06FDF977508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9B4D25-2BD1-4997-B243-06FDF977508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9B4D25-2BD1-4997-B243-06FDF977508B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FE2BB60C-FCF6-4D76-A818-EDB789153F5C} = {32197963-6896-48A4-B868-0C7E40F57251}
 		{5C234519-5F0E-401C-AB18-2A974DE5AA07} = {3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}
 		{B4D1FDEA-954C-4EC1-9537-0CA8C972F3AE} = {3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}
 		{F81FB798-324D-4F28-A403-F2DD9FD01205} = {3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}
 		{D73B16E0-1944-4BFA-B452-7ADD303AD697} = {3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}
 		{A01E36D6-4AB6-41A0-8EAD-7C47F7D7149C} = {3EAAE8CD-6A76-4E18-9BA0-0B011B91D581}
+		{2A9B4D25-2BD1-4997-B243-06FDF977508B} = {32197963-6896-48A4-B868-0C7E40F57251}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08930890-61EC-4CEE-8ADE-D8DE805FB734}
 	EndGlobalSection
 EndGlobal

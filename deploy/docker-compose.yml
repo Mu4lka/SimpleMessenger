@@ -20,8 +20,8 @@ services:
     
   simplemessenger.api:
     build:
-      context: ../scr/SimpleMessenger.Api
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: src/SimpleMessenger.Api/Dockerfile
     depends_on:
       db:
        condition: service_healthy
@@ -34,4 +34,4 @@ services:
       context: ..
       dockerfile: front/Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
