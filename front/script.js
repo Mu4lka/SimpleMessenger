@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:5108"
+const url = "http://localhost:8080"
 
 function appendMessage(message) {
     const messageElement = document.createElement("div");

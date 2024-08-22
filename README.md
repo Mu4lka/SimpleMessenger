@@ -2,7 +2,7 @@
 
 Это руководство поможет вам настроить и запустить приложение SimpleMessenger с использованием Docker. Приложение состоит из базы данных PostgreSQL и API-сервиса на .NET Core. Ниже приведены шаги, чтобы запустить приложение.
 
-![SimpleMessenger Frontend](https://github.com/Mu4lka/SimpleMessenger/blob/main/front/simpleMessangerFront.png)
+![SimpleMessenger Frontend](https://github.com/Mu4lka/SimpleMessenger/blob/main/simpleMessangerFront.png)
 
 ## Предварительные требования
 

@@ -17,21 +17,22 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    
+
   simplemessenger.api:
+    image: ${DOCKER_REGISTRY-}simplemessengerapi
     build:
-      context: ../scr/SimpleMessenger.Api
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: src/SimpleMessenger.Api/Dockerfile
+    ports:
+      - 8080:8080
     depends_on:
       db:
        condition: service_healthy
-    ports:
-      - 8080:8080
 
   front:
     container_name: simplemessenger.frontend
     build:
-      context: ..
-      dockerfile: front/Dockerfile
+      context: ../front
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
