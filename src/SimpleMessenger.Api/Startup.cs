@@ -26,7 +26,7 @@ public static class Startup
                 builder =>
                 {
                     builder
-                        .WithOrigins("http://127.0.0.1:5500")
+                        .WithOrigins("http://localhost:3000")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
