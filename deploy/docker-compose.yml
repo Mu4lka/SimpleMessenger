@@ -1,8 +1,38 @@
 version: '3.9'
 
 services:
+  db:
+    restart: always
+    image: postgres:15.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: simpleMessenger
+      POSTGRES_DB: simpleMessenger
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   simplemessenger.api:
     image: ${DOCKER_REGISTRY-}simplemessengerapi
     build:
       context: ..
       dockerfile: src/SimpleMessenger.Api/Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      db:
+       condition: service_healthy
+
+  front:
+    container_name: simplemessenger.frontend
+    build:
+      context: ../front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
