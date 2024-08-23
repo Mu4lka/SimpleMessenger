@@ -3,7 +3,7 @@ const url = "http://localhost:8080"
 function appendMessage(message) {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message");
-
+    
     const timestamp = new Date(message.createdDate).toLocaleString();
 
     messageElement.innerHTML = `
@@ -19,14 +19,11 @@ function appendMessage(message) {
 }
 
 async function fetchMessages() {
-    const currentDate = new Date();
-    const endDate = currentDate.toISOString();
-
-    const startDate = new Date(currentDate);
-    startDate.setMinutes(currentDate.getMinutes() - 10);
-    const startDateIso = startDate.toISOString();
+    const now = new Date();
+    const startDate = new Date(now.getTime() - 10 * 60000).toISOString();
+    const endDate = now.toISOString();
     
-    const response = await fetch(`${url}/api/messages?startDate=${encodeURIComponent(startDateIso)}&endDate=${encodeURIComponent(endDate)}`);
+    const response = await fetch(`${url}/api/messages?startDate=${startDate}&endDate=${endDate}`);
 
     if (response.ok) {
         const getMessagesRequest = await response.json();
