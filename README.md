@@ -25,16 +25,10 @@ git clone https://github.com/Mu4lka/SimpleMessenger.git
 
 ### Шаг 2: Сборка и запуск приложения
 
-- Перейдите в каталог deploy:
-  
-```bash
-cd deploy
-```
-
 - Запустите контейнеры:
 
 ```bash
-docker-compose up --build
+docker-compose -f deploy/docker-compose.yml up --build
 ```
 
 ## Остановка приложения
@@ -42,5 +36,5 @@ docker-compose up --build
 - Чтобы остановить приложение, выполните команду:
 
 ```bash
-docker-compose down
+docker-compose -f deploy/docker-compose.yml down
 ```
