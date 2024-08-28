@@ -17,7 +17,6 @@ public class SendMessageRequest
     /// <summary>
     /// Порядковый номер
     /// </summary>
-    [Required]
     [Range(0, int.MaxValue)]
     public int SequenceNumber { get; set; }
 }
